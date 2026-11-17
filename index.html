@@ -5,35 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
     <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-top: 20px;
+        }
+        #resize-bin{
+           padding: 10px 20px;
+           font-size: 16px;
+           cursor: pointer;
+           margin-bottom: 20px;
+        
+        }
         #container {
             display : flex;
             flex-wrap: wrap;
             width: 960px;
             height: 960px;
             border: 2px solid #000;
-            margin: 20px auto;
         }
         .grid-square {
-            width: calc(960px/16);
-            height: calc(960px/16);
             box-sizing: border-box;
             border: 1px solid #ddd;
         }
-        
+    
     </style>
 </head>
 <body>
-    <div id ="container"></div>
+
+     <button id ="resize-btn">Change Grid Size</button>
+     <div id = "container"></div>
+
 
 <script>
-
+    document.addEventListener("DOMContentLoaded", ()=> {
     const container = document.getElementById('container');
+    const resizeBtn = document.getElementById('resize-btn');
 
     function createGrid(size){
         const totalSquares = size*size;
+        const squareSize = 960 / size;
+
         for(let i= 0; i < totalSquares; i++){
             const square = document.createElement('div');
             square.classList.add('grid-square');
+            
+            square.style.width =`${squareSize}px`;
+            square.style.height= `${squareSize}px`;
 
             square.addEventListener('mouseover', () => {
                 const r = Math.floor(Math.random()*256);  
@@ -46,9 +66,23 @@
         
     }}
             
+    resizeBtn.addEventListener('click', ()=> {
+        let input = prompt( "Enter number of squares per side (maximum 100): "); [span_0](end_span)
+        let size = parseInt(input);
+
+        if(input == null) return;
+
+        if(size > 0 && size <=100){[span_1](start_span)[span_1](end_span)
+        container.innerHTML = '';
+        createGrid(size);
+        } else{
+            alert("Please enter a valid number between 1 and 100."); [span_2](start_span)[span_2](end_span)
+        }
+    });
         
 
     createGrid(16);
+});
     </script>
     </body>
 </html>
