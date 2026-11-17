@@ -67,16 +67,16 @@
     }}
             
     resizeBtn.addEventListener('click', ()=> {
-        let input = prompt( "Enter number of squares per side (maximum 100): "); [span_0](end_span)
+        let input = prompt( "Enter number of squares per side (maximum 100): "); //[span_0](end_span)
         let size = parseInt(input);
 
-        if(input == null) return;
+        if(input === null) return;
 
-        if(size > 0 && size <=100){[span_1](start_span)[span_1](end_span)
+        if(size > 0 && size <=100) {//[span_1](start_span)[span_1](end_span)
         container.innerHTML = '';
         createGrid(size);
         } else{
-            alert("Please enter a valid number between 1 and 100."); [span_2](start_span)[span_2](end_span)
+            alert("Please enter a valid number between 1 and 100."); //[span_2](start_span)[span_2](end_span)
         }
     });
         
